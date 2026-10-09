@@ -6,6 +6,7 @@
 rust_i18n::i18n!("locales", fallback = "en");
 
 pub mod assets;
+mod dock;
 pub mod hero;
 pub mod i18n;
 mod login;
@@ -79,6 +80,7 @@ pub fn run() {
         // Without a tray icon (turned off, or a desktop that shows none) there is nothing left to
         // use once the window closes.
         cx.on_window_closed(|cx, _| {
+            Shell::apply_dock(cx);
             if !cx.windows().is_empty() {
                 return;
             }
@@ -105,9 +107,11 @@ pub fn show_window(cx: &mut App) {
         if handle.update(cx, |_, window, _| window.activate_window()).is_err() {
             cx.defer(move |cx| {
                 let _ = handle.update(cx, |_, window, _| window.activate_window());
+                Shell::apply_dock(cx);
             });
         }
         cx.activate(true);
+        Shell::apply_dock(cx);
         return;
     }
     let store = Store::global(cx);
@@ -116,6 +120,7 @@ pub fn show_window(cx: &mut App) {
         Ok(_) => cx.activate(true),
         Err(e) => eprintln!("could not open the {APP_NAME} window: {e:#}"),
     }
+    Shell::apply_dock(cx);
 }
 
 fn set_menus(cx: &mut App) {
@@ -182,6 +187,17 @@ impl Shell {
             }
             (true, false, true) | (false, false, false) => {}
         }
+        // Keep an entry point if the menu bar is disabled or cannot be installed.
+        Shell::apply_dock(cx);
+    }
+
+    fn apply_dock(cx: &App) {
+        if cx.try_global::<Shell>().is_none() {
+            return;
+        }
+        let config = Store::global(cx).read(cx).config();
+        // Re-apply after window activation and read the actual AppKit policy, not a cached bool.
+        dock::set_visible(config.dock || !cx.windows().is_empty() || !Shell::has_tray(cx));
     }
 }
 

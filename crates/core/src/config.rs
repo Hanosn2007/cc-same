@@ -35,6 +35,8 @@ pub struct Config {
     pub language: String,
     /// Desktop app: show the menu bar / notification area icon.
     pub tray: bool,
+    /// macOS: show the Dock icon independently of the menu bar icon.
+    pub dock: bool,
     /// Desktop app: look for a new version on GitHub once a day.
     pub check_updates: bool,
     /// Desktop app: download new versions in the background and install them while the window
@@ -55,6 +57,7 @@ impl Default for Config {
             appearance: "system".into(),
             language: "system".into(),
             tray: true,
+            dock: true,
             check_updates: true,
             auto_update: true,
         }

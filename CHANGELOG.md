@@ -3,6 +3,18 @@
 What changed in each version of CC Same. The app shows these notes after it updates, and under
 Settings › Updates.
 
+## 0.1.10-dock.1 - 2026-10-09
+
+### Added
+
+- A persistent macOS **Always show Dock icon** setting. When off, the Dock icon follows the
+  window: opening shows it and closing hides it, while the menu bar and sync stay available.
+- Restore the Dock entry point when the menu bar is disabled or unavailable.
+
+### Changed
+
+- App updates follow `Hanosn2007/cc-same` releases for this fork.
+
 ## 0.1.10 - 2026-10-05
 
 ### Added

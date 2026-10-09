@@ -7,7 +7,7 @@ resolver = "2"
 name = "cc-same-app"
 description = "Keep Claude Desktop's local sessions identical across all your accounts (desktop app)"
 # Same as the version in the root Cargo.toml (CI checks).
-version = "0.1.10"
+version = "0.1.10-dock.1"
 edition = "2024"
 license = "MIT"
 repository = "https://github.com/songkeys/cc-same"
@@ -47,6 +47,10 @@ windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_System_
 # The menu bar / notification area icon.
 [target.'cfg(any(target_os = "macos", target_os = "windows"))'.dependencies]
 tray-icon = { version = "0.24", default-features = false }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6"
+objc2-app-kit = { version = "0.3", default-features = false, features = ["NSApplication", "NSRunningApplication"] }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 ksni = { version = "0.3.6", default-features = false, features = ["blocking", "tokio"] }

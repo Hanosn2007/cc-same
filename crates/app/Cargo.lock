@@ -872,7 +872,7 @@ dependencies = [
 
 [[package]]
 name = "cc-same-app"
-version = "0.1.10"
+version = "0.1.10-dock.1"
 dependencies = [
  "anyhow",
  "auto-launch",
@@ -882,6 +882,8 @@ dependencies = [
  "image",
  "ksni",
  "libc",
+ "objc2 0.6.4",
+ "objc2-app-kit 0.3.2",
  "reqwest",
  "rust-i18n",
  "rustls",
@@ -896,7 +898,7 @@ dependencies = [
 
 [[package]]
 name = "cc-same-core"
-version = "0.1.10"
+version = "0.1.10-dock.1"
 dependencies = [
  "anyhow",
  "chrono",

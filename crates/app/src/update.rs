@@ -21,9 +21,9 @@ use std::time::{Duration, Instant};
 
 /// This copy's version.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
-const LATEST: &str = "https://api.github.com/repos/songkeys/cc-same/releases/latest";
+const LATEST: &str = "https://api.github.com/repos/Hanosn2007/cc-same/releases/latest";
 /// Where people can download the latest release themselves.
-pub const DOWNLOADS: &str = "https://github.com/songkeys/cc-same/releases/latest";
+pub const DOWNLOADS: &str = "https://github.com/Hanosn2007/cc-same/releases/latest";
 /// What changed in each version, as of this build.
 pub const CHANGELOG: &str = include_str!("../../../CHANGELOG.md");
 /// Given to a freshly installed copy, followed by the process id of the copy it replaces.

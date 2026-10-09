@@ -2,6 +2,15 @@
 # CLDR form: .one/.other, .one/.few/.many (ru), .other only (zh, ja, ko).
 _version: 2
 
+"settings.dock":
+  en: "Always show Dock icon"
+  zh-CN: "始终显示 Dock 图标"
+  zh-TW: "始終顯示 Dock 圖示"
+"settings.dock.detail":
+  en: "When off, the Dock icon follows the window: opening shows it, closing hides it. The menu bar stays available."
+  zh-CN: "关闭后，Dock 图标跟随窗口：打开时显示，关闭时隐藏。菜单栏继续保留。"
+  zh-TW: "關閉後，Dock 圖示跟隨視窗：開啟時顯示，關閉時隱藏。選單列繼續保留。"
+
 "headline.loading":
   en: "Reading your accounts…"
   zh-CN: "正在读取你的账号…"

@@ -79,7 +79,18 @@ fn body(store: &Entity<Store>, cx: &mut App) -> impl IntoElement {
         row(
             t(if cfg!(target_os = "macos") { "settings.tray.mac" } else { "settings.tray.other" }),
             Some(t("settings.tray.detail")),
-            toggle(store, "tray", cfg.tray, true, |c, on| c.tray = on),
+            toggle(store, "tray", cfg.tray, true, |c, on| {
+                c.tray = on;
+                if !on {
+                    c.dock = true;
+                }
+            }),
+            cx,
+        ),
+        row(
+            t("settings.dock"),
+            Some(t("settings.dock.detail")),
+            toggle(store, "dock", cfg.dock, cfg!(target_os = "macos") && cfg.tray, |c, on| c.dock = on),
             cx,
         ),
         row(
